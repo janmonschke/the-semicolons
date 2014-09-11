@@ -26,7 +26,7 @@
   -webkit-animation-iteration-count: infinite;
 }
 
-#repl-input, pre, code { 
+#repl-input, pre, code {
   font-family: "courier new", monospace; font-weight: bold; border: none; font-size: 24px;
   line-height: 0.8em;
   margin: 0; padding:0;
@@ -45,4 +45,10 @@
   height: 240px;
   overflow: auto;
   width: 100%;
+}
+
+#nyan{
+  position: fixed;
+  left: -300px;
+  transition: left 4s ease-in;
 }

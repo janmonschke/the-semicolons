@@ -17,21 +17,26 @@ window.gocrazy = function(){
   return "went crazy. happy now?";
 };
 
+window.nyan = function(){
+  $('#nyan').css('left', '1400px');
+  return "Nananananananananananananana nanananana na";
+}
+
 window.reset = function(){
   $(document.body).removeClass('gocracy');
   return "went crazy. happy now?";
 };
 
 
-function installRepl() {  
+function installRepl() {
   $REPL = $('#repl');
   $INPUT = $('#repl-input');
-  
+
   function out(text) {
     $REPL.prepend($('<pre>&nbsp;&nbsp;' + text + '</pre>'));
-    $INPUT.val("").focus();    
+    $INPUT.val("").focus();
   }
-  
+
   $('#repl-input').on('keypress', function(e) {
     if (e.which == 13) {
       try {
@@ -44,7 +49,7 @@ function installRepl() {
         out(ret_val);
       } catch (e) {
         console.log(e);
-        out(e);        
+        out(e);
       }
     }
   });
