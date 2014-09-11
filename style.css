@@ -25,3 +25,24 @@
   -webkit-animation-duration: 2s;
   -webkit-animation-iteration-count: infinite;
 }
+
+#repl-input, pre, code { 
+  font-family: "courier new", monospace; font-weight: bold; border: none; font-size: 24px;
+  line-height: 0.8em;
+  margin: 0; padding:0;
+  background: none;
+}
+#repl-input:focus { border: none; outline: none;}
+#repl-wrapl {
+  position: fixed;
+  bottom: 0px;
+  height: 264px;
+  width: 60%;
+  left: 50%;
+  margin-left: -30%;
+}
+#repl {
+  height: 240px;
+  overflow: auto;
+  width: 100%;
+}
