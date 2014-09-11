@@ -3,8 +3,8 @@ var heli = '/sounds/helicopter.mp3';
 var horn = '/sounds/air-horn.mp3';
 
 var lyrics = [
-  [12, "We are the Rejects"],
-  [24, "We are the Rejects!!!"],
+  [6, "We are the Rejects"],
+  [8, "We are the Rejects!!!"],
 ];
 
 var deferreds = [BufferHandler.load(amen),BufferHandler.load(heli),BufferHandler.load(horn)];
@@ -57,6 +57,12 @@ window.bono = function() {
   return "*groan*";
 }
 
+window.Jed = null;
+
+window.simulate = function() {
+  
+}
+
 window.displaylyrics = function() {
   lyrics.forEach(function(l) {
     console.log("scheduling: " + l[1] +  "at: " + l[0]);
@@ -78,8 +84,13 @@ function installRepl() {
   $REPL = $('#repl');
   $INPUT = $('#repl-input');
 
-  function out(text) {
-    $REPL.prepend($('<pre>&nbsp;&nbsp;' + text + '</pre>'));
+  function out(command, text, error) {
+    if (error) {
+      $REPL.prepend($('<pre class="error">&nbsp;&nbsp;' + text + '</pre>'));
+    } else {
+      $REPL.prepend($('<pre>&nbsp;&nbsp;' + text + '</pre>'));
+    }    
+    $REPL.prepend($('<pre class="command">&nbsp;&nbsp;' + command + '</pre>'));
     $INPUT.val("").focus();
   }
 
@@ -88,14 +99,14 @@ function installRepl() {
       try {
         line = $INPUT.val();
         if(line[line.length - 1] !== ';') {
-          out("Missing Semicolon!");
+          out(line, "Missing Semicolon!", true);
           return;
         }
-        ret_val = eval($INPUT.val());
-        out(ret_val);
+        ret_val = eval(line);
+        out(line, ret_val, false);
       } catch (e) {
         console.log(e);
-        out(e);
+        out(line, e, true);
       }
     }
   });

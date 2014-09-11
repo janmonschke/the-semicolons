@@ -66,6 +66,13 @@ body {
   margin: 0; padding:0;
   background: none;
 }
+pre.command {
+  color: #ccc;
+}
+pre.error {
+  color: #f00;
+}
+
 #repl-input { width: 80%;}
 #repl-input:focus { border: none; outline: none;}
 #repl-wrapl {
