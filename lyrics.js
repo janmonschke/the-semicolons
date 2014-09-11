@@ -56,6 +56,7 @@ window.lyrics = [
   [165, "JS you’re drunk!"],
   [167, "JS you’re drunk!"],
   [169, "JS you’re drunk!"],
+
   [171, "false isn’t false!"],
   [173, "'true' == true  // returns false"],
   [175, "not a number!"],
@@ -64,6 +65,8 @@ window.lyrics = [
   [181, "parseInt('08'); // 0"],
   [183, "JS you’re drunk!"],
   [185, "JS you’re drunk!"],
+
+  // addCheese();
 
   [187, "we are the rejects"],
   [191, "we are the rejects"],
