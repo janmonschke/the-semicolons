@@ -1,22 +1,25 @@
-var amen = '/sounds/amen.wav';
 var heli = '/sounds/helicopter.mp3';
 var horn = '/sounds/air-horn.mp3';
+var backing_track = '/sounds/backing_track.mp3';
 
 var lyrics = [
   [6, "We are the Rejects"],
   [8, "We are the Rejects!!!"],
 ];
 
-var deferreds = [BufferHandler.load(amen),BufferHandler.load(heli),BufferHandler.load(horn)];
+var deferreds = [BufferHandler.load(heli),BufferHandler.load(horn), BufferHandler.load(backing_track)];
 
 $.when.apply($, deferreds).done(function(){
   console.log('READY FOR TAKEOFF!');
+  
   installRepl();
+  out(null, "READY.", false);
 });
 
-window.funkydrums = function(){
-  BufferHandler.play(amen, {loop: true});
-  return "ain't it funky."
+window.backingtrack = function(callback){
+  BufferHandler.play(backing_track, {loop: false});
+  if(callback) callback();
+  return "Backing Track Started."
 };
 
 window.gocrazy = function(){
@@ -59,8 +62,12 @@ window.bono = function() {
 
 window.Jed = null;
 
-window.simulate = function() {
+window.simulate = function() {  
   
+}
+
+window.add_cheese = function() {
+  return 
 }
 
 window.displaylyrics = function() {
@@ -84,13 +91,15 @@ function installRepl() {
   $REPL = $('#repl');
   $INPUT = $('#repl-input');
 
-  function out(command, text, error) {
+  window.out = function(command, text, error) {
     if (error) {
       $REPL.prepend($('<pre class="error">&nbsp;&nbsp;' + text + '</pre>'));
     } else {
       $REPL.prepend($('<pre>&nbsp;&nbsp;' + text + '</pre>'));
+    }
+    if (command) {
+        $REPL.prepend($('<pre class="command">&nbsp;&nbsp;' + command + '</pre>'));
     }    
-    $REPL.prepend($('<pre class="command">&nbsp;&nbsp;' + command + '</pre>'));
     $INPUT.val("").focus();
   }
 

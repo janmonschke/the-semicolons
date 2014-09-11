@@ -19,6 +19,7 @@ window.BufferHandler = {
 
   _processArrayBuffer: function(arrayBuffer, deferred, url){
     this.context.decodeAudioData(arrayBuffer, function(buffer) {
+      console.log(buffer);
       this.cache[url] = buffer;
       // the url will be used as the id
       deferred.resolve(url);
