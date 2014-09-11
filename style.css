@@ -2,6 +2,15 @@ body {
   font-family: monospace;
 }
 
+@-webkit-keyframes fade {
+  0% {
+    color: #f00;
+  }
+  100% {
+    color: #000;
+  }
+}
+
 @-webkit-keyframes doedoe{
   0%{
     background-color: red;
@@ -82,6 +91,9 @@ pre.error {
   width: 60%;
   left: 50%;
   margin-left: -30%;
+  background: #eee;
+  padding: 20px;
+  border-radius: 20px 20px 0 0;
 }
 #repl {
   height: 240px;
@@ -94,6 +106,13 @@ pre.error {
   left: -300px;
   transition: left 4s ease-in;
 }
+#cheese{
+  position: fixed;
+  left: -300px;
+  transition: left 3s ease-in;
+}
+
+
 #itunes-download {
  position: absolute;
  top: 20%;
@@ -115,3 +134,25 @@ pre.error {
   font-size: 3em;
   font-weight: bold;
 }
+#lyrics.achtung {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count: once;
+}  
+
+#logo {
+  background: #ce1e46;
+  border: 10px solid #ce1e46;
+  transform: scale(0.0001);
+  transition: transform 4s ease-out;
+}
+
+#logo.large {
+  transform: scale(1);
+}
+
+#logo-wrapper {
+  margin-top: 10%;
+  text-align: center;
+}
+

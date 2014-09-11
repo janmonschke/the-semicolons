@@ -23,18 +23,17 @@ window.gocrazy = function(){
 };
 
 window.nyan = function(){
-  $('#nyan').css('left', '1400px');
+  $('#nyan').css('left', '2000px');
   return "Nananananananananananananana nanananana na";
+}
+window.addcheese = function(){
+  $('#cheese').css('left', '2000px');
+  return "here. have some cheddar.";
 }
 
 window.reset = function(){
   $(document.body).removeClass('gocracy');
   return "went crazy. happy now?";
-};
-
-window.helicopter = function(){
-  BufferHandler.play(heli);
-  return "ROFL";
 };
 
 window.helicopter = function(){
@@ -55,14 +54,10 @@ window.bono = function() {
   return "*groan*";
 }
 
-window.Jed = null;
+window.Jed = 'Jed';
 
-window.simulate = function() {
-
-}
-
-window.add_cheese = function() {
-  return
+window.simulate = function(jed) {
+  return "Simulating " + jed + " prepared.";
 }
 
 window.displaylyrics = function() {
@@ -77,6 +72,10 @@ function displayLine(line) {
   var fun = function() {
     $lyrics = $('#lyrics');
     $lyrics.text(line);
+    $lyrics.addClass('achtung');
+    setTimeout(function() {
+      $lyrics.removeClass('achtung');
+    }, 1000);
   }
   return fun;
 }
@@ -126,9 +125,13 @@ function installRepl() {
   $('#repl-input').on('keypress', function(e) {
     if (e.which == 13) {
       try {
-        line = $INPUT.val();
+        line = $INPUT.val().trim();
+        if (line === '') {
+          $('#repl-input').focus();
+          return;
+        }
         if(line[line.length - 1] !== ';') {
-          out(line, "Missing Semicolon!", true);
+          out(line, "ERROR: Missing Semicolon!", true);
           return;
         }
         ret_val = eval(line);

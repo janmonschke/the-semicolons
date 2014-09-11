@@ -103,9 +103,18 @@ var playOscillators = function () {
     tsw.connect(master_gain, volume, tsw.speakers)
 };
 
+
 window.thx = function () {
     master_gain = tsw.gain(0.2),
     createOscillators(30);
     playOscillators(0);
-    return "The Reject.JS is listening."
+    setTimeout(function() {
+      $('#logo').addClass('large');
+    }, 15000);
+    setTimeout(function() {
+      $('#logo-wrapper').hide();
+    }, 24000);
+    return "Reject.JS is listening."
 };
+
+window.start = window.thx;
