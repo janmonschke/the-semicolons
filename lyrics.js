@@ -9,6 +9,7 @@ window.lyrics = [
   [27.5, "but berlin is a big city"],
   [31, "with an even bigger community"],
 
+  // GoldenAxe.dragon();
   [35, "we are the rejects"],
   [39, "we are the rejects"],
   [43.5, "this wasn't the conference we want"],
@@ -24,6 +25,7 @@ window.lyrics = [
   [76, "kamil loves the ampersand"],
   [79.5, "and stephan's plans are mighty grand"],
 
+  // ScarfGuy.scarf();
   [83, "we are the rejects"],
   [87, "we are the rejects"],
   [91.5, "this wasn't the conference we want"],
@@ -39,11 +41,13 @@ window.lyrics = [
   [124, "it's all really kind of ridiculous"],
   [128, "go home, JS, you're drunk."],
 
+  // Pokemon.dance();
   [131, "we are the rejects"],
   [135, "we are the rejects"],
   [139.5, "this wasn't the conference we want"],
   [143.5, "that's why we sing this song"],
 
+  // StuartMemo.speak();
   [155, "JS you’re drunk!"],
   [157, "JS you’re drunk!"],
   [159, "JS you’re drunk!"],
@@ -53,11 +57,11 @@ window.lyrics = [
   [167, "JS you’re drunk!"],
   [169, "JS you’re drunk!"],
   [171, "false isn’t false!"],
-  [173, "false isn’t false!"],
+  [173, "'true' == true  // returns false"],
   [175, "not a number!"],
-  [177, "not a number!"],
+  [177, "NaN === NaN // false"],
   [179, "parsed integers!"],
-  [181, "parsed integers!"],
+  [181, "parseInt('08'); // 0"],
   [183, "JS you’re drunk!"],
   [185, "JS you’re drunk!"],
 
