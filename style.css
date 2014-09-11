@@ -112,11 +112,30 @@ pre.error {
   position: fixed;
   top: 200px;
   right: 50px;
+  height: 200px;
 }
+
 #cheese{
   position: fixed;
   left: -300px;
   transition: left 3s ease-in;
+}
+
+#scarfguy{
+  display: none;
+  position: fixed;
+  left: 50%;
+  margin-left: -175px;
+  top: 200px;
+  height: 200px;
+}
+
+#goldenaxe{
+  display: none;
+  position: fixed;
+  top: 200px;
+  left: 50px;
+  height: 200px;
 }
 
 

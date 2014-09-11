@@ -1,8 +1,9 @@
 var heli = '/sounds/helicopter.mp3';
 var horn = '/sounds/air-horn.mp3';
 var backing_track = '/sounds/backing_track.mp3';
+var stuart_memo = '/sounds/stuartmemo.wav';
 
-var deferreds = [BufferHandler.load(heli),BufferHandler.load(horn), BufferHandler.load(backing_track)];
+var deferreds = [BufferHandler.load(heli),BufferHandler.load(horn), BufferHandler.load(backing_track), BufferHandler.load(stuart_memo)];
 
 $.when.apply($, deferreds).done(function(){
   console.log('READY FOR TAKEOFF!');
@@ -11,9 +12,31 @@ $.when.apply($, deferreds).done(function(){
   out(null, "READY.", false);
 });
 
+window.gif = function(id){
+  $('#' + id).show();
+  setTimeout(function(){
+    $('#' + id).fadeOut();
+  }, 16000)
+}
+
 window.Pokemon = {
   dance: function(){
-    $('#pokemon').show();
+    gif('pokemon');
+    return 'Pika Pikaaaaaaaa!';
+  }
+}
+
+window.GoldenAxe = {
+  dragon: function(){
+    gif('goldenaxe');
+    return 'Pick the dwarf!';
+  }
+}
+
+window.ScarfGuy = {
+  scarf: function(){
+    gif('scarfguy');
+    return 'Our most personal scarf yet.';
   }
 }
 
@@ -46,6 +69,13 @@ window.helicopter = function(){
   BufferHandler.play(heli);
   return "ROFL";
 };
+
+window.StuartMemo = {
+  speak: function(){
+    BufferHandler.play(stuart_memo);
+    return "The Sine wave, in the most gorgeous accent in the world.";
+  }
+}
 
 window.siren = function(){
   BufferHandler.play(horn);
