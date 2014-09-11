@@ -16,6 +16,9 @@ window.BackingTrack = {
     BufferHandler.play(backing_track, {loop: false});
     console.log(displayLyrics); 
     displayLyrics();
+    setTimeout(function() {
+      $('#notification').addClass('show');
+    }, 150 * 1000);
     
     return "Backing Track Started."
   }
@@ -106,8 +109,21 @@ window.synthesize = window.get;
 window.sznthesiye = window.get;
 
 
-
-
+window.love = function() {
+  var width = window.innerWidth;
+  var height = window.innerHeight;
+  var heart = $("<div class='heart'>&lt;3</div>");
+  var color = "rgb(" + Math.round(255 * Math.random()) + ", " + Math.round(255 * Math.random()) + "," + Math.round(255 * Math.random()) + ")";  
+  heart.css({
+    top: Math.random() * height, 
+    left: Math.random() * width,
+    color: color,
+    "font-size": "" + (Math.floor(Math.random() * 20)) + "em",
+    "transform": "" + (Math.random() * 360) + "deg"
+  });
+  $("body").append(heart);
+  setTimeout(love, 200 + Math.random() * 200);
+}
 
 window.displayLyrics = function() {
   lyrics.forEach(function(l) {

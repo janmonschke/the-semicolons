@@ -11,6 +11,22 @@ body {
   }
 }
 
+@-webkit-keyframes notify {
+  0% {
+    top: -300px;
+  }
+  33% {
+    top: 20px;
+  }
+  66% {
+    top: 20px;
+  }
+  100% {
+    top: -300px;
+  }
+  
+}
+
 @-webkit-keyframes doedoe{
   0%{
     background-color: red;
@@ -158,4 +174,27 @@ pre.error {
 
 .heart {
   position: absolute;
+}
+
+
+#notification {
+  background: #fff url(/images/itunes.png) left center no-repeat;
+  background-size: 100px;
+  border: 2px solid black;
+  border-radius: 10px;
+  width: 20%;
+  height: 100px;
+  padding: 20px 20px 20px 120px;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.6);
+  font-family: Helvetica;
+  position: absolute;
+  right: 20px;
+  top: -200px;
+  z-index: 10;
+}
+
+#notification.show {
+  -webkit-animation-name: notify;
+  -webkit-animation-duration: 5s;
+  -webkit-animation-iteration-count: once;
 }
