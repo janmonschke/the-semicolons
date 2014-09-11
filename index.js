@@ -11,7 +11,7 @@ var deferreds = [BufferHandler.load(heli),BufferHandler.load(horn), BufferHandle
 
 $.when.apply($, deferreds).done(function(){
   console.log('READY FOR TAKEOFF!');
-  
+
   installRepl();
   out(null, "READY.", false);
 });
@@ -62,12 +62,12 @@ window.bono = function() {
 
 window.Jed = null;
 
-window.simulate = function() {  
-  
+window.simulate = function() {
+
 }
 
 window.add_cheese = function() {
-  return 
+  return
 }
 
 window.displaylyrics = function() {
@@ -86,6 +86,9 @@ function displayLine(line) {
   return fun;
 }
 
+var ls = localStorage.getItem('replHistory');
+var replHistory = ls ? JSON.parse(ls) : [];
+var replIndex = 0;
 
 function installRepl() {
   $REPL = $('#repl');
@@ -99,9 +102,31 @@ function installRepl() {
     }
     if (command) {
         $REPL.prepend($('<pre class="command">&nbsp;&nbsp;' + command + '</pre>'));
-    }    
+        replIndex = 0;
+        replHistory.unshift(command);
+        localStorage.setItem('replHistory', JSON.stringify(replHistory));
+    }
     $INPUT.val("").focus();
   }
+
+  $('#repl-input').on('keyup', function(e){
+    // up
+    if(e.which == 38){
+      if(replIndex <= replHistory.length - 1){
+        var oldCommand = replHistory[replIndex++];
+        $('#repl-input').val(oldCommand).focus()
+      }
+    }else if(e.which == 40){ // DOWN
+      if(replIndex >= 0){
+        var oldCommand = "";
+        if(replIndex == 0)
+          var oldCommand = replHistory[replIndex];
+        else
+          var oldCommand = replHistory[--replIndex];
+        $('#repl-input').val(oldCommand).focus()
+      }
+    }
+  });
 
   $('#repl-input').on('keypress', function(e) {
     if (e.which == 13) {
