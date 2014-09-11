@@ -1,0 +1,27 @@
+@-webkit-keyframes doedoe{
+  0%{
+    background-color: red;
+  }
+
+  5%{
+    background-color: yellow;
+  }
+
+  50%{
+    background-color: red;
+  }
+
+  55%{
+    background-color: yellow;
+  }
+
+  100%{
+    background-color: red;
+  }
+}
+
+.gocracy{
+  -webkit-animation-name: doedoe;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+}

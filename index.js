@@ -9,3 +9,7 @@ $.when.apply($, deferreds).done(function(){
 window.funkyDrums = function(){
   BufferHandler.play(amen, {loop: true});
 };
+
+window.goCracy = function(){
+  $(document.body).addClass('gocracy');
+};
