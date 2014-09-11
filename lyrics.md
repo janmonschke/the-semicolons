@@ -1,8 +1,8 @@
 We Are The Rejects (2014)
 =========================
 
-Lyrics and Music by Paul Campbell
-Performed by The Semicolons at RejectJS
+Lyrics and Music by Paul Campbell  
+Performed by The Semicolons at RejectJS  
 
 ---
 
