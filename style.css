@@ -156,3 +156,6 @@ pre.error {
   text-align: center;
 }
 
+.heart {
+  position: absolute;
+}

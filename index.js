@@ -11,13 +11,17 @@ $.when.apply($, deferreds).done(function(){
   out(null, "READY.", false);
 });
 
-window.backingtrack = function(callback){
-  BufferHandler.play(backing_track, {loop: false});
-  if(callback) callback();
-  return "Backing Track Started."
+window.BackingTrack = {
+  start: function(){
+    BufferHandler.play(backing_track, {loop: false});
+    console.log(displayLyrics); 
+    displayLyrics();
+    
+    return "Backing Track Started."
+  }
 };
 
-window.gocrazy = function(){
+window.goCrazy = function(){
   $(document.body).addClass('gocracy');
   return "went crazy. happy now?";
 };
@@ -26,7 +30,7 @@ window.nyan = function(){
   $('#nyan').css('left', '2000px');
   return "Nananananananananananananana nanananana na";
 }
-window.addcheese = function(){
+window.addCheese = function(){
   $('#cheese').css('left', '2000px');
   return "here. have some cheddar.";
 }
@@ -46,7 +50,7 @@ window.siren = function(){
   return "MASSIVE!";
 };
 
-window.bono = function() {
+window.promo = function() {
   $('#itunes-download').show();
   setTimeout(function() {
     $('#itunes-download').hide();
@@ -54,13 +58,58 @@ window.bono = function() {
   return "*groan*";
 }
 
-window.Jed = 'Jed';
+window.JanM = 'JanM';
+window.JanK = 'JanK';
+String.prototype.init = function() { return "Voice Initialized."; }
+window.Jed = 'Jed Schmidt';
+window.Jan = 'Jan';
+window.Paul = 'Paul Campbell';
+//window.Bono = 'Bono';
 
-window.simulate = function(jed) {
-  return "Simulating " + jed + " prepared.";
+window.TheSemicolons = {
+  welcome: function() {
+    return "Hello World; we are The Semicolons."
+  }
 }
 
-window.displaylyrics = function() {
+var jans = ["Jan Krutisch", "Jan Monschke"];
+
+var greetings = {
+  "Paul Campbell": "Paul Campbell takes the stage",
+  "Jed Schmidt": "J.S. himself, it's Jed Schmidt",
+  "Jan Monschke": "You saw him here first last year: Jan Monschke",
+  "Jan Krutisch": "Jan Krutisch: Because you can never have too many Jans"
+};
+
+window.simulate = function(jed, callback) {
+  return "Simulating " + jed + " prepared.";
+  if(callback) callback();
+}
+
+window.get = function(name) {
+  if (name == 'Bono') {
+    return;
+  }
+  if (name == 'Jan') {
+    jan = jans.pop();
+    if (jan) {
+      return greetings[jan];
+    } else {
+      throw("ERROR::QUOTA_EXCEEDED Too many Jans")
+    }
+    
+  }
+  return greetings[name];
+}
+window.summon = window.get;
+window.synthesize = window.get;
+window.sznthesiye = window.get;
+
+
+
+
+
+window.displayLyrics = function() {
   lyrics.forEach(function(l) {
     console.log("scheduling: " + l[1] +  "at: " + l[0]);
     setTimeout(displayLine(l[1]), l[0] * 1000);
