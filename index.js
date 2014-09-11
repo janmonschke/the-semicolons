@@ -11,6 +11,12 @@ $.when.apply($, deferreds).done(function(){
   out(null, "READY.", false);
 });
 
+window.Pokemon = {
+  dance: function(){
+    $('#pokemon').show();
+  }
+}
+
 window.backingtrack = function(callback){
   BufferHandler.play(backing_track, {loop: false});
   if(callback) callback();

@@ -106,6 +106,13 @@ pre.error {
   left: -300px;
   transition: left 4s ease-in;
 }
+
+#pokemon{
+  display: none;
+  position: fixed;
+  top: 200px;
+  right: 50px;
+}
 #cheese{
   position: fixed;
   left: -300px;
