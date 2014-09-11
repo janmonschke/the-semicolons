@@ -7,5 +7,5 @@ $.when.apply($, deferreds).done(function(){
 });
 
 window.funkyDrums = function(){
-  BufferHandler.play(amen);
+  BufferHandler.play(amen, {loop: true});
 };

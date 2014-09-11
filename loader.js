@@ -27,9 +27,11 @@ window.BufferHandler = {
     });
   },
 
-  play: function(id){
+  play: function(id, options){
+    if(!options) options = {};
     var source = this.context.createBufferSource();
     source.buffer = this.cache[id];
+    if(options.loop) source.loop = true;
     source.connect(this.context.destination);
 
     source.start(0);
