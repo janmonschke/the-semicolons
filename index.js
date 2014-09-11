@@ -2,11 +2,6 @@ var heli = '/sounds/helicopter.mp3';
 var horn = '/sounds/air-horn.mp3';
 var backing_track = '/sounds/backing_track.mp3';
 
-var lyrics = [
-  [6, "We are the Rejects"],
-  [8, "We are the Rejects!!!"],
-];
-
 var deferreds = [BufferHandler.load(heli),BufferHandler.load(horn), BufferHandler.load(backing_track)];
 
 $.when.apply($, deferreds).done(function(){
