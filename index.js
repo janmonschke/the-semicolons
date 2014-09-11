@@ -1,22 +1,25 @@
-var amen = '/sounds/amen.wav';
 var heli = '/sounds/helicopter.mp3';
 var horn = '/sounds/air-horn.mp3';
+var backing_track = '/sounds/backing_track.mp3';
 
 var lyrics = [
-  [12, "We are the Rejects"],
-  [24, "We are the Rejects!!!"],
+  [6, "We are the Rejects"],
+  [8, "We are the Rejects!!!"],
 ];
 
-var deferreds = [BufferHandler.load(amen),BufferHandler.load(heli),BufferHandler.load(horn)];
+var deferreds = [BufferHandler.load(heli),BufferHandler.load(horn), BufferHandler.load(backing_track)];
 
 $.when.apply($, deferreds).done(function(){
   console.log('READY FOR TAKEOFF!');
+  
   installRepl();
+  out(null, "READY.", false);
 });
 
-window.funkydrums = function(){
-  BufferHandler.play(amen, {loop: true});
-  return "ain't it funky."
+window.backingtrack = function(callback){
+  BufferHandler.play(backing_track, {loop: false});
+  if(callback) callback();
+  return "Backing Track Started."
 };
 
 window.gocrazy = function(){
@@ -57,6 +60,16 @@ window.bono = function() {
   return "*groan*";
 }
 
+window.Jed = null;
+
+window.simulate = function() {  
+  
+}
+
+window.add_cheese = function() {
+  return 
+}
+
 window.displaylyrics = function() {
   lyrics.forEach(function(l) {
     console.log("scheduling: " + l[1] +  "at: " + l[0]);
@@ -78,8 +91,15 @@ function installRepl() {
   $REPL = $('#repl');
   $INPUT = $('#repl-input');
 
-  function out(text) {
-    $REPL.prepend($('<pre>&nbsp;&nbsp;' + text + '</pre>'));
+  window.out = function(command, text, error) {
+    if (error) {
+      $REPL.prepend($('<pre class="error">&nbsp;&nbsp;' + text + '</pre>'));
+    } else {
+      $REPL.prepend($('<pre>&nbsp;&nbsp;' + text + '</pre>'));
+    }
+    if (command) {
+        $REPL.prepend($('<pre class="command">&nbsp;&nbsp;' + command + '</pre>'));
+    }    
     $INPUT.val("").focus();
   }
 
@@ -88,14 +108,14 @@ function installRepl() {
       try {
         line = $INPUT.val();
         if(line[line.length - 1] !== ';') {
-          out("Missing Semicolon!");
+          out(line, "Missing Semicolon!", true);
           return;
         }
-        ret_val = eval($INPUT.val());
-        out(ret_val);
+        ret_val = eval(line);
+        out(line, ret_val, false);
       } catch (e) {
         console.log(e);
-        out(e);
+        out(line, e, true);
       }
     }
   });
