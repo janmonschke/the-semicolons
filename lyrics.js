@@ -37,7 +37,7 @@ window.lyrics = [
   [115.5, "the crazy stuff that is done with js"],
   [120, "and this is only by the rejects"],
   [124, "it's all really kind of ridiculous"],
-  [128, "go home, j.s., you're drunk."],
+  [128, "go home, JS, you're drunk."],
 
   [131, "we are the rejects"],
   [135, "we are the rejects"],
