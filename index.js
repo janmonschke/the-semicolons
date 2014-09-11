@@ -1,6 +1,13 @@
 var amen = '/sounds/amen.wav';
+var heli = '/sounds/helicopter.mp3';
+var horn = '/sounds/air-horn.mp3';
 
-var deferreds = [BufferHandler.load(amen)];
+var lyrics = [
+  [12, "We are the Rejects"],
+  [24, "We are the Rejects!!!"],
+];
+
+var deferreds = [BufferHandler.load(amen),BufferHandler.load(heli),BufferHandler.load(horn)];
 
 $.when.apply($, deferreds).done(function(){
   console.log('READY FOR TAKEOFF!');
@@ -26,6 +33,45 @@ window.reset = function(){
   $(document.body).removeClass('gocracy');
   return "went crazy. happy now?";
 };
+
+window.helicopter = function(){
+  BufferHandler.play(heli);
+  return "ROFL";
+};
+
+window.helicopter = function(){
+  BufferHandler.play(heli);
+  return "ROFL";
+};
+
+window.siren = function(){
+  BufferHandler.play(horn);
+  return "MASSIVE!";
+};
+
+window.bono = function() {
+  $('#itunes-download').show();
+  setTimeout(function() {
+    $('#itunes-download').hide();
+  }, 10000)
+  return "*groan*";
+}
+
+window.displaylyrics = function() {
+  lyrics.forEach(function(l) {
+    console.log("scheduling: " + l[1] +  "at: " + l[0]);
+    setTimeout(displayLine(l[1]), l[0] * 1000);
+  });
+  return;
+}
+
+function displayLine(line) {
+  var fun = function() {
+    $lyrics = $('#lyrics');
+    $lyrics.text(line);
+  }
+  return fun;
+}
 
 
 function installRepl() {

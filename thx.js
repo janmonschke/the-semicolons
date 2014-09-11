@@ -107,4 +107,5 @@ window.thx = function () {
     master_gain = tsw.gain(0.2),
     createOscillators(30);
     playOscillators(0);
+    return "The Reject.JS is listening."
 };
