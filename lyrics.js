@@ -22,7 +22,7 @@ window.lyrics = [
   [67.5, "stefanie located pokémon"],
   [72, "mouse braun punked out to go it alone"],
   [76, "kamil loves the ampersand"],
-  [78, "and stephan's plans are mighty grand"],
+  [79.5, "and stephan's plans are mighty grand"],
 
   [83, "we are the rejects"],
   [87, "we are the rejects"],
